@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="example" version="1.4">
+  <types>
+   <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true" omitTermFreqAndPositions="true" omitPositions="true" />
+        <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="true" omitTermFreqAndPositions="true" />
+    <fieldtype name="binary" class="solr.BinaryField"/>
+
+    <fieldType name="int" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0" omitTermFreqAndPositions="true" />
+    <fieldType name="float" class="solr.TrieFloatField" precisionStep="0" omitNorms="true" positionIncrementGap="0" omitTermFreqAndPositions="true" />
+    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" omitNorms="true" positionIncrementGap="0"  omitTermFreqAndPositions="true" />
+    <fieldType name="double" class="solr.TrieDoubleField" precisionStep="0" omitNorms="true" positionIncrementGap="0" omitTermFreqAndPositions="true" />
+
+    <fieldType name="tint" class="solr.TrieIntField" precisionStep="0" omitNorms="true"  positionIncrementGap="0" omitTermFreqAndPositions="true" />
+    <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="0" omitNorms="true"  positionIncrementGap="0" omitTermFreqAndPositions="true" />
+    <fieldType name="tlong" class="solr.TrieLongField" precisionStep="0" omitNorms="true"  positionIncrementGap="0" omitTermFreqAndPositions="true" />
+    <fieldType name="tdouble" class="solr.TrieDoubleField" precisionStep="0" omitNorms="true"  positionIncrementGap="0" omitTermFreqAndPositions="true" />
+
+    <fieldType name="date" class="solr.TrieDateField" omitNorms="true" precisionStep="0" positionIncrementGap="0" omitTermFreqAndPositions="true" />
+        <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true" precisionStep="0"  positionIncrementGap="0" omitTermFreqAndPositions="true" />
+
+
+    <fieldType name="random" class="solr.RandomSortField" indexed="true" />
+
+
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="0" omitNorms="true"  omitTermFreqAndPositions="true"  omitPositions="true">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <!--filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/-->
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <!--filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/-->
+      </analyzer>
+      <analyzer type="query">
+       <tokenizer class="solr.StandardTokenizerFactory"/>
+        <!--filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/-->
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <!--filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/-->
+      </analyzer>
+    </fieldType>
+   
+    <fieldtype name="payloads" stored="false" indexed="true" class="solr.TextField" >
+      <analyzer>
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!--
+        The DelimitedPayloadTokenFilter can put payloads on tokens... for example,
+        a token of "foo|1.4"  would be indexed as "foo" with a payload of 1.4f
+        Attributes of the DelimitedPayloadTokenFilterFactory : 
+         "delimiter" - a one character delimiter. Default is | (pipe)
+	 "encoder" - how to encode the following value into a playload
+	    float -> org.apache.lucene.analysis.payloads.FloatEncoder,
+	    double -> org.apache.lucene.analysis.payloads.DoubleEncoder,
+	    integer -> o.a.l.a.p.IntegerEncoder
+	    identity -> o.a.l.a.p.IdentityEncoder
+            Fully Qualified class name implementing PayloadEncoder, Encoder must have a no arg constructor.
+         -->
+        <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
+      </analyzer>
+    </fieldtype>
+
+    <!-- lowercases the entire field value, keeping it as a single token.  -->
+    <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory" />
+      </analyzer>
+    </fieldType>
+
+    <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" />
+</types>
+
+
+  <fields>
+
+<field name="version" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="pvtimestamp" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="pvtime" type="tdate" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="pid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="processpath" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="ip" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="provinceid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="cityid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="province" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="city" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="acookie" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="sessionid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="cgsessionid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="viewtype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="subviewtype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="abtag" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="useragent" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="wangwangid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="refpid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="refcreativeid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adzonecategory" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adzonetype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="currentpagenum" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adsnumperpage" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rewritequery" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rawquery_pid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_ip" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_keyword" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rawquery_catid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_count" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_offset" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_propertyid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_frontcatid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_refpid" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rawquery_location" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rawquery_gprice" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rawquery_sort" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="serviceid" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="bidwordid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="creativeid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adgroupid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="campaignid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="thirdpartyid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="custid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="bidword" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="producttype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="subproducttype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adprice" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adhighestprice" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adrelativeposition" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="matchtype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="queryid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adcategory" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="adcategoryconfidence" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adsource" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adboardtype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="adpropertytag" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="adscoretag" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="adabsoluteposition" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewritematchlevel" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewritematchtype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewritequerytype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewritekeytype" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewritesearchcontent" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="rewritesearchweight" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rewriterankinfo" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="matchscope_b" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="matchscope_s" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="directionaldimension" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="redstring" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="bonustag" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="layoutid" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="rawquery_clk1" type="text" indexed="true" stored="true"  omitTermFreqAndPositions="true" multiValued="true" />
+<field name="filtercode" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="filterflag" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+<field name="thedate" type="string" indexed="true" stored="true"  omitTermFreqAndPositions="true" />
+
+<field name="higo_uuid" type="tlong" indexed="true" stored="true"/>
+
+    <dynamicField name="*_s"  type="string"  indexed="true"  stored="false"/>
+    <dynamicField name="*_txt" type="text"   indexed="true"  stored="false" multiValued="true"/>
+    <dynamicField name="*_b"  type="boolean" indexed="true"  stored="false"/>
+    <dynamicField name="*_i" type="tint"     indexed="true"  stored="false"/>
+    <dynamicField name="*_l" type="tlong"    indexed="true"  stored="false"/>
+    <dynamicField name="*_f" type="tfloat"   indexed="true"  stored="false"/>
+    <dynamicField name="*_d" type="tdouble"  indexed="true"  stored="false"/>
+    <dynamicField name="*_dt" type="tdate"   indexed="true"  stored="false"/>
+    <dynamicField name="*_p" type="payloads" indexed="true"  stored="false"/>
+  </fields>
+  <uniqueKey>higo_uuid</uniqueKey>
+  <solrQueryParser defaultOperator="AND"/>
+
+</schema>

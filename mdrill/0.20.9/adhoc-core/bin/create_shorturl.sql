@@ -1,0 +1,23 @@
+CREATE TABLE shorturl (
+thedate string,
+url string,
+visitorip string,
+visitoruri string,
+shortid string,
+visitorid string,
+adid string,
+name string,
+cookievalue string,
+createtime string,
+browser string,
+tobeaddattri1 string,
+tobeaddattri2 string,
+tobeaddattri3 string,
+tobeaddattri4 string,
+tobeaddattri5 string,
+tobeaddattri6 string,
+tobeaddattri7 string,
+tobeaddattri8 string,
+tobeaddattri9 string,
+tobeaddattri0 string
+)

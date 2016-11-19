@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>adhoc-all</artifactId>
+		<groupId>com.alimama.dw</groupId>
+		<version>0.18-beta</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<groupId>com.alimama.dw</groupId>
+	<artifactId>adhoc-realtime</artifactId>
+	<version>0.18-beta</version>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.alimama.dw</groupId>
+			<artifactId>adhoc-wrapper</artifactId>
+			<version>0.18-beta</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alimama.dw</groupId>
+			<artifactId>adhoc-mdrill</artifactId>
+			<version>0.18-beta</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alimama.dw</groupId>
+			<artifactId>adhoc-solr</artifactId>
+			<version>0.18-beta</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alimama.dw</groupId>
+			<artifactId>adhoc-core</artifactId>
+			<version>0.18-beta</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alimama.dw</groupId>
+			<artifactId>adhoc-jdbc</artifactId>
+			<version>0.18-beta</version>
+		</dependency>
+
+		
+		
+		<!-- Kafka: sunlei7 -->
+		        <dependency>  
+            <groupId>log4j</groupId>  
+            <artifactId>log4j</artifactId>  
+            <version>1.2.14</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.kafka</groupId>  
+            <artifactId>kafka_2.9.2</artifactId>  
+            <version>0.8.1</version>  
+            <exclusions>  
+                <exclusion>  
+                    <groupId>log4j</groupId>  
+                    <artifactId>log4j</artifactId>  
+                </exclusion>  
+            </exclusions>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.scala-lang</groupId>  
+            <artifactId>scala-library</artifactId>  
+            <version>2.9.2</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>com.yammer.metrics</groupId>  
+            <artifactId>metrics-core</artifactId>  
+            <version>2.2.0</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>com.yammer.metrics</groupId>  
+            <artifactId>metrics-annotation</artifactId>  
+            <version>2.2.0</version>  
+        </dependency>          
+        <dependency>  
+            <groupId>com.101tec</groupId>  
+            <artifactId>zkclient</artifactId>  
+            <version>0.3</version>  
+        </dependency>  
+		<!-- Kafka: sunlei7 -->
+
+		<!-- TT: liuhk2 -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>0.5.0-20100116</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/libthrift-0.5.0-20100116.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>timetunnel-client</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>timetunnel-idl</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>  -->
+		<!-- TT: liuhk2 ends-->
+
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>utf-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
+	</build>
+
+</project>
+

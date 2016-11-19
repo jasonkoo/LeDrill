@@ -1,0 +1,21 @@
+CREATE TABLE feedback (
+thedate string,
+ad_id string,
+pid string,
+ac_id string,
+ad_type string,
+log_time string,
+miniute_5 string,
+hour string,
+col_0 tlong,
+col_1 tlong,
+col_2 tlong,
+col_3 tlong,
+col_4 tlong,
+col_5 tlong,
+col_6 tlong,
+col_7 tlong,
+col_8 tlong,
+col_9 tlong,
+records tlong
+)
